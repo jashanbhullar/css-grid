@@ -1,86 +1,131 @@
 :root {
-    --red: #e27d60;
-    --blue: #85dccb;
-    --orange: #e8a87c;
-    --purple: #c38d9e;
-    --green: #41b3a3;
-    --white: #fff;
-    --grey: #efefef;
+  --red: #e27d60;
+  --blue: #85dccb;
+  --orange: #e8a87c;
+  --purple: #c38d9e;
+  --green: #41b3a3;
+  --white: #fff;
+  --grey: #efefef;
 }
 
-
+body,
+html {
+  height: 100%;
+}
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    background: var(--grey);
-    margin: 0;
-    display: grid;
-    grid-template-rows: 51px 30%;
-
+  font-family: "Open Sans", sans-serif;
+  background: var(--grey);
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto 50px;
+  grid-template-columns: 12% auto;
+  grid-template-areas:
+    "sidebar right"
+    "footer footer";
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 ul {
-    list-style-type: none;
-    float: right;
+  list-style-type: none;
+  float: right;
 }
 
 ul li {
-    display: inline;
+  display: inline;
 }
 
-
 ul li a {
-    color: var(--white);
-    padding: 15px;
+  color: var(--white);
+  padding: 15px;
 }
 
 #logo {
-    padding: 15px;
-    margin-left: 15px;
-    background-color: var(--red);
-    text-align: center;
-    font-weight: bold;
-    display: inline-block;
-
+  padding: 15px;
+  margin-left: 15px;
+  background-color: var(--red);
+  text-align: center;
+  font-weight: bold;
+  display: inline-block;
 }
 
 header {
-    background: var(--blue);
-    display: grid;
-    grid-template-columns: fit-content(20%) auto;
+  background: var(--blue);
+  display: grid;
+  align-items: center;
+  grid-template-columns: fit-content(20%) auto;
 }
 
 section#hero {
-    background: var(--orange);
-    padding: 2em;
-    border-top: 5px solid var(--grey);
-    display: grid;
-    height: fit-content;
-    grid-template-columns: repeat(2, auto);
+  background: var(--orange);
+  padding: 2em;
+  border-top: 5px solid var(--grey);
+  display: grid;
+  height: fit-content;
+  grid-template-columns: repeat(2, auto);
 }
 
 #content h1 {
-    text-transform: uppercase;
-    color: var(--white);
+  text-transform: uppercase;
+  color: var(--white);
 }
 
 #content p {
-    color: var(--grey);
+  color: var(--grey);
 }
 
 img {
-    max-width: 100%;
-    background-size: cover;
-    margin: 0 auto;
+  max-width: 100%;
+  background-size: cover;
+  margin: 0 auto;
 }
 
 #goku_kaiken {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: var(--purple);
+  padding: 1em;
+}
+
+.main {
+  grid-area: right;
+  grid-template-rows: 70px fit-content(30%);
+  display: grid;
+}
+
+footer {
+  grid-area: footer;
+  background: var(--blue);
+}
+
+#features {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  text-align: center;
+}
+
+#features i {
+  font-size: 2em;
+}
+
+ul#features {
+  margin: 0;
+  padding: 0;
+}
+
+ul#features li {
+  padding: 1em;
+}
+
+ul#features li p {
+  color: #1d1d1d;
 }
