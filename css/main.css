@@ -8,11 +8,6 @@
   --grey: #efefef;
 }
 
-body,
-html {
-  height: 100%;
-}
-
 body {
   font-family: "Open Sans", sans-serif;
   background: var(--grey);
@@ -58,6 +53,7 @@ header {
   display: grid;
   align-items: center;
   grid-template-columns: fit-content(20%) auto;
+  grid-area: header;
 }
 
 section#hero {
@@ -67,6 +63,7 @@ section#hero {
   display: grid;
   height: fit-content;
   grid-template-columns: repeat(2, auto);
+  grid-area: goku;
 }
 
 #content h1 {
@@ -92,14 +89,19 @@ img {
 
 .sidebar {
   grid-area: sidebar;
-  background: var(--purple);
+  background: var(--red);
   padding: 1em;
 }
 
 .main {
   grid-area: right;
-  grid-template-rows: 70px fit-content(30%);
+  grid-template-rows: 70px fit-content(400px) fit-content(400px) auto;
   display: grid;
+  grid-template-areas:
+    "header"
+    "goku"
+    "vegeta"
+    "cards";
 }
 
 footer {
@@ -111,6 +113,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(5, auto);
   text-align: center;
+  grid-area: cards;
 }
 
 #features i {
@@ -128,4 +131,84 @@ ul#features li {
 
 ul#features li p {
   color: #1d1d1d;
+}
+
+section#info {
+  background: var(--purple);
+  padding: 2em;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: space-around;
+  grid-area: vegeta;
+}
+
+#vegeta {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 60em) {
+  .sidebar {
+    display: none;
+  }
+
+  body {
+    grid-template-columns: auto;
+
+    grid-template-areas:
+      "right"
+      "footer";
+  }
+  .main {
+    display: grid;
+    grid-template-areas:
+      "header"
+      "vegeta"
+      "goku"
+      "cards";
+  }
+
+  #features {
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
+  }
+
+  ul#features li:nth-child(1) {
+    grid-column: 1 / span 2;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  header {
+    grid-template-columns: auto;
+  }
+
+  #logo {
+    padding: 15px;
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
+  nav ul {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    align-items: center;
+    padding: 0;
+    margin: 1rem 0;
+  }
+  ul {
+    float: unset;
+  }
+
+  .main {
+    grid-template-rows: auto fit-content(400px) fit-content(400px) auto;
+  }
+
+  section#hero {
+    grid-template-columns: auto;
+  }
+  section#info {
+    grid-template-columns: auto;
+  }
 }
